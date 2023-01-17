@@ -2,10 +2,21 @@
 
 pragma solidity ^0.8.17;
 
-import "hardhat/console.sol";
-
 contract MyToken {
-    constructor() {
-        console.log("Print anything you want!");
+    uint public mintTokenNumber;
+    uint public totalSupply;
+    mapping (address => uint) private balances;
+
+    constructor(uint _mintTokenNumber) {
+        mintTokenNumber = _mintTokenNumber;
+    }
+
+    function mint() external payable {
+        balances[msg.sender] += mintTokenNumber;
+        totalSupply += mintTokenNumber;
+    }
+
+    function balanceOf(address account) view public returns (uint) {
+        return balances[account];
     }
 }

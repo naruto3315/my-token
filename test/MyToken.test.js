@@ -1,4 +1,6 @@
 describe('MyToken', function () {
+    async
+
     it('deploy', async function () {
         const myTokenContractFactory = await hre.ethers.getContractFactory('MyToken')
         const myTokenContract = await myTokenContractFactory.deploy()
